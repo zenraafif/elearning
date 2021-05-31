@@ -13,16 +13,16 @@
     <!-- Line icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
     <!-- Bootstrap -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Slick slider -->
-    <link href="assets/css/slick.css" rel="stylesheet">
+    <link href="../assets/css/slick.css" rel="stylesheet">
     <!-- Gallery Lightbox -->
-    <link href="assets/css/magnific-popup.css" rel="stylesheet">
+    <link href="../assets/css/magnific-popup.css" rel="stylesheet">
     <!-- Theme color -->
-    <link id="switcher" href="assets/css/theme-color/default-theme.css" rel="stylesheet">
+    <link id="switcher" href="../assets/css/theme-color/default-theme.css" rel="stylesheet">
 
     <!-- Main Style -->
-    <link href="styles.css" rel="stylesheet">
+    <link href="../styles.css" rel="stylesheet">
 
     <!-- Fonts -->
 
@@ -100,15 +100,11 @@
   </div>
 </section>
 
-<section>
-  <div>
-    <form method="POST" action="proses.php">
-      <input type="text" name="">
-      
-    </form>
-  </div>
-</section>
 
+  <a href="siswa_tambah.php">
+    <button>Tambah Siswa</button>
+  </a>
+  
 <div class="modal fade logout" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-sm" role="document">
         <div class="modal-header" style="background-color: white; color: black">
@@ -139,19 +135,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <!-- Bootstrap -->
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
   <!-- Slick slider -->
-    <script type="text/javascript" src="assets/js/slick.min.js"></script>
+    <script type="text/javascript" src="../assets/js/slick.min.js"></script>
     <!-- Counter js -->
-    <script type="text/javascript" src="assets/js/counter.js"></script>
+    <script type="text/javascript" src="../assets/js/counter.js"></script>
     <!-- Filterable Gallery js -->
-    <script type="text/javascript" src="assets/js/jquery.filterizr.min.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.filterizr.min.js"></script>
     <!-- Gallery Lightbox -->
-    <script type="text/javascript" src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.magnific-popup.min.js"></script>
     <!-- Ajax contact form  -->
-    <script type="text/javascript" src="assets/js/app.js"></script>
+    <script type="text/javascript" src="../assets/js/app.js"></script>
     <!-- Custom js -->
-  <script type="text/javascript" src="assets/js/custom.js"></script>
+  <script type="text/javascript" src="../assets/js/custom.js"></script>
   
     
   </body>
