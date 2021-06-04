@@ -37,73 +37,154 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+      #body-row {
+    margin-left:0;
+    margin-right:0;
+}
+#sidebar-container {
+    min-height: 100vh;   
+    background-color: #333;
+    padding: 0;
+}
+
+
+.sidebar-expanded {
+    width: 230px;
+}
+.sidebar-collapsed {
+    width: 60px;
+}
+
+
+#sidebar-container .list-group a {
+    height: 50px;
+    color: white;
+}
+
+
+#sidebar-container .list-group .sidebar-submenu a {
+    height: 45px;
+    padding-left: 30px;
+}
+.sidebar-submenu {
+    font-size: 0.9rem;
+}
+
+
+.sidebar-separator-title {
+    background-color: #333;
+    height: 35px;
+}
+.sidebar-separator {
+    background-color: #333;
+    height: 25px;
+}
+.logo-separator {
+    background-color: #333;    
+    height: 60px;
+}
+
+
+#sidebar-container .list-group .list-group-item[aria-expanded="false"] .submenu-icon::after {
+  content: " \f0d7";
+  font-family: FontAwesome;
+  display: inline;
+  text-align: right;
+  padding-left: 10px;
+}
+
+#sidebar-container .list-group .list-group-item[aria-expanded="true"] .submenu-icon::after {
+  content: " \f0da";
+  font-family: FontAwesome;
+  display: inline;
+  text-align: right;
+  padding-left: 10px;
+}
+    </style>
   </head>
   <body>
 
     <!-- Start Header -->
-  <header id="mu-header" class="" role="banner">
-    <div class="container">
-      <nav class="navbar navbar-default mu-navbar">
-      <div class="container-fluid">
-        <!-- Ini Navbar ya -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-
-          <!-- Text Logo -->
-          <a class="navbar-brand" href="#">SIP Admin</a>
-
-        </div>
-
-        <!-- Link Navbar -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" background>
-            <ul class="nav navbar-nav mu-menu navbar-right">
-              <li><a href="#">HOME</a></li>
-              <li><a href="#mu-about">INTRODUCTION</a></li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">STUDY <span class="caret"></span></a>
-                    <ul class="dropdown-menu" >
-                      <a class="dropdown-item" href="#mu-portfolio" style="color: #000000"> >> MATERI</a><br/>
-                      <a class="dropdown-item" href="quizz.html" style="color: #000000"> >> QUIZZ</a>
-                    </ul>
-                </li>
-                <li><a href="#mu-testimonials">ABOUT</a></li>
-                <li><a href="login.html">LOGOUT</a></li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
-    </div>
-  </header>
-  <!-- End Header -->
-
-  <!-- Start Image Slider -->
-
-<section id="mu-about">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="mu-about-area">
-          <div class="mu-about-header">
-            <h2 class="mu-heading-title">Dashboard Guru</h2>
-            <span class="mu-header-dot"></span>
-            <p>Selamat Datang di Halaman Guru</p>
-            <input type="button" class="btn btn-primary" data-toggle="modal" data-target=".logout" value="Logout">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-  <a href="siswa_tambah.php">
-    <button>Tambah Siswa</button>
+    <!-- Start Sidebar -->
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">
+    <img src="https://v4-alpha.getbootstrap.com/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+    <span class="menu-collapsed">DMT</span>
   </a>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      
+      <li class="nav-item dropdown d-sm-block d-md-none">
+        <a class="nav-link dropdown-toggle" href="#" id="smallerscreenmenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Menu
+        </a>
+        <div class="dropdown-menu" aria-labelledby="smallerscreenmenu">
+            <a class="dropdown-item" href="#">Dashboard</a>
+            <a class="dropdown-item" href="#">Profile</a>
+        </div>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+
+
+<div class="row" id="body-row">
+    <div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
+        <ul class="list-group">
+            <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+                <small>MAIN MENU</small>
+            </li>
+            <a href="#submenu1" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-dashboard fa-fw mr-3"></span>
+                    <span class="menu-collapsed">Dashboard</span>
+                    <span class="submenu-icon ml-auto"></span>
+                </div>
+            </a>
+            <div id='submenu1' class="collapse sidebar-submenu">
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">Charts</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">Reports</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">Tables</span>
+                </a>
+            </div>
+            <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-user fa-fw mr-3"></span>
+                    <span class="menu-collapsed">Profile</span>
+                    <span class="submenu-icon ml-auto"></span>
+                </div>
+            </a>
+            <div id='submenu2' class="collapse sidebar-submenu">
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">Settings</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">Password</span>
+                </a>
+            </div>            
+           
+        </ul>
+    </div> <!-- End Sidebar -->
+
+    <!-- MAIN -->
+    <div class="col">
+        
+        <h1>
+            DUMET School
+        </h1>
+
+    </div>
+</div>
   
 <div class="modal fade logout" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-sm" role="document">

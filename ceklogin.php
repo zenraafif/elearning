@@ -51,7 +51,7 @@
                       timer:2000,
                       buttons:false
                       }).then(()=>{
-                          window.location.href='guru';
+                          window.location.href='guruu';
                           })
                   </script>";
         }else if($data['role'] == 'siswa'){
