@@ -2,6 +2,6 @@
 <?php include 'view/sidebar.php';?>
 
 
-<h1>Dashboard</h1>
+<h1>Materi</h1>
 
 <?php include 'view/footer.php';?>
