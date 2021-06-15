@@ -1,16 +1,43 @@
 <?php include 'view/header.php';?>
 <?php include 'view/sidebar.php';?>
+
+<?php require '../koneksi.php';?> 
+
+<?php
+    $sql = "SELECT * FROM user WHERE role ='siswa'";
+    $result = $conn->query($sql);
+
+?>
+
+
 <!-- 4B7FD33E-37AF-4D5D-BC6C-9DED46D835D6 -->
 
-<h1>Siswa</h1>
+<!-- <div class="container">
+  <div class="row">
+    <button type="button" class="btn btn-success"><i class="far fa-plus">Tambah Siswa</button>
+  </div>
+</div> -->
+
 
 <div class="container">
+  <div class="row">
+    <div class="col-12 mt-2">
+    <h1>Siswa</h1>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-12 mt-2 mb-3">
+        <a href="siswa_tambah.php">
+          <button class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Tambah Siswa</button>
+        </a>
+      </div>
+  </div>
   <div class="row">
     <div class="col-12">
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th scope="col">Day</th>
+            <th scope="col">No.</th>
             <th scope="col">Article Name</th>
             <th scope="col">Author</th>
             <th scope="col">Shares</th>
@@ -18,39 +45,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Bootstrap 4 CDN and Starter Template</td>
-            <td>Cristina</td>
-            <td>2.846</td>
-            <td>
-              <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
-              <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-            <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Bootstrap Grid 4 Tutorial and Examples</td>
-            <td>Cristina</td>
-            <td>3.417</td>
-            <td>
-              <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
-              <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-            <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Bootstrap Flexbox Tutorial and Examples</td>
-            <td>Cristina</td>
-            <td>1.234</td>
-            <td>
-              <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
-              <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-            <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-            </td>
-          </tr>
+          <?php foreach($result as $key=>$value): ?>
+            <tr>
+              <th scope="row"><?= $key+1?></th>
+              <td><?= $value['username']; ?></td>
+              <td><?= $value['role']; ?></td>
+              <td>2.846</td>
+              <td>
+                <a type="button" class="btn btn-primary" href="siswa_detail.php?id=<?= $value['id_user']; ?>"><i class="far fa-eye"></i></a>
+                <a type="button" class="btn btn-success" href="siswa_edit.php?id=<?= $value['id_user']; ?>"><i class="fas fa-edit"></i></a>
+              <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+              </td>
+            </tr>
+          <?php endforeach; ?>
         </tbody>
       </table>
     </div>

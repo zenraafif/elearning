@@ -37,6 +37,9 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+	<?php
+		session_start();
+	?>
   </head>
   <body>
 
@@ -72,7 +75,22 @@
 		            		</ul>
 		            </li>
 		            <li><a href="#mu-testimonials">ABOUT</a></li>
-		            <li><a href="login.html">LOGIN</a></li>
+					<!-- array(3) { 
+						["role"]=> string(4) "guru" 
+						["username"]=> string(5) "guru1" 
+						["user_id"]=> string(1) "3" } -->
+					<?php
+						
+						if(isset($_SESSION["user_id"])){
+							if($_SESSION["role"] == "guru"){
+								echo '<li><a href="guru"><i class="fa fa-user" aria-hidden="true"></i>' .$_SESSION["username"].'</a></li>';
+							}else{
+								echo '<li><a href="profil.php"><i class="fa fa-user" aria-hidden="true"></i>' .$_SESSION["username"].'</a></li>';
+							}
+						}else{
+							echo '<li><a href="login.php">LOGIN</a></li>';
+						};
+					?>
 		      	</ul>
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->

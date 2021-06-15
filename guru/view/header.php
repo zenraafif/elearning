@@ -10,4 +10,11 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://kit.fontawesome.com/7f68d15522.js" crossorigin="anonymous"></script>
+        <?php session_start();?>
+        <?php
+            if(!isset($_SESSION["user_id"])){
+                exit();
+              }
+        ?>
     </head>
