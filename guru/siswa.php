@@ -38,9 +38,9 @@
         <thead>
           <tr>
             <th scope="col">No.</th>
-            <th scope="col">Article Name</th>
-            <th scope="col">Author</th>
-            <th scope="col">Shares</th>
+            <th scope="col">Nama</th>
+            <th scope="col">Email</th>
+            <th scope="col">Jenis Kelamin</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
@@ -48,9 +48,9 @@
           <?php foreach($result as $key=>$value): ?>
             <tr>
               <th scope="row"><?= $key+1?></th>
-              <td><?= $value['username']; ?></td>
-              <td><?= $value['role']; ?></td>
-              <td>2.846</td>
+              <td><?= $value['nama']; ?></td>
+              <td><?= $value['email']; ?></td>
+              <td><?= $value['gender']; ?></td>
               <td>
                 <a type="button" class="btn btn-primary" href="siswa_detail.php?id=<?= $value['id_user']; ?>"><i class="far fa-eye"></i></a>
                 <a type="button" class="btn btn-success" href="siswa_edit.php?id=<?= $value['id_user']; ?>"><i class="fas fa-edit"></i></a>

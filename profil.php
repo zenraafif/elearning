@@ -40,172 +40,136 @@
 	<?php
 		session_start();
 	?>
-    <style>
-        body {
-    margin: 0;
-    padding-top: 40px;
-    color: #2e323c;
-    background: #f5f6fa;
-    position: relative;
-    height: 100%;
-}
-.account-settings .user-profile {
-    margin: 0 0 1rem 0;
-    padding-bottom: 1rem;
-    text-align: center;
-}
-.account-settings .user-profile .user-avatar {
-    margin: 0 0 1rem 0;
-}
-.account-settings .user-profile .user-avatar img {
-    width: 90px;
-    height: 90px;
-    -webkit-border-radius: 100px;
-    -moz-border-radius: 100px;
-    border-radius: 100px;
-}
-.account-settings .user-profile h5.user-name {
-    margin: 0 0 0.5rem 0;
-}
-.account-settings .user-profile h6.user-email {
-    margin: 0;
-    font-size: 0.8rem;
-    font-weight: 400;
-    color: #9fa8b9;
-}
-.account-settings .about {
-    margin: 2rem 0 0 0;
-    text-align: center;
-}
-.account-settings .about h5 {
-    margin: 0 0 15px 0;
-    color: #007ae1;
-}
-.account-settings .about p {
-    font-size: 0.825rem;
-}
-.form-control {
-    border: 1px solid #cfd1d8;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
-    font-size: .825rem;
-    background: #ffffff;
-    color: #2e323c;
-}
-
-.card {
-    background: #ffffff;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    border: 0;
-    margin-bottom: 1rem;
-}
-
-    </style>
   </head>
   <body>
+
+  	<!-- Start Header -->
+	<header id="mu-header" class="mu-fixed-nav" role="banner">
+		<div class="container">
+			<nav class="navbar navbar-default mu-navbar">
+		  <div class="container-fluid">
+		    <!-- Ini Navbar ya -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+
+		      <!-- Text Logo -->
+		      <a class="navbar-brand" href="#">Sistem Informasi Pembelajaran</a>
+
+		    </div>
+
+		    <!-- Link Navbar -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" background>
+		      	<ul class="nav navbar-nav mu-menu navbar-right">
+			        <li><a href="#">HOME</a></li>
+			        <li><a href="#mu-about">INTRODUCTION</a></li>
+		            <li class="dropdown">
+		            	<a href="#" class="dropdown-toggle" data-toggle="dropdown">STUDY <span class="caret"></span></a>
+		            		<ul class="dropdown-menu" >
+		            			<a class="dropdown-item" href="#mu-portfolio" style="color: #000000"> >> MATERI</a><br/>
+		            			<a class="dropdown-item" href="quizz.html" style="color: #000000"> >> QUIZZ</a>
+		            		</ul>
+		            </li>
+		            <li><a href="#mu-testimonials">ABOUT</a></li>
+					<!-- array(3) { 
+						["role"]=> string(4) "guru" 
+						["username"]=> string(5) "guru1" 
+						["user_id"]=> string(1) "3" } -->
+					<?php
+						
+						if(isset($_SESSION["user_id"])){
+							if($_SESSION["role"] == "guru"){
+								echo '<li><a href="guru"><i class="fa fa-user" aria-hidden="true"></i>' .$_SESSION["username"].'</a></li>';
+							}else{
+								echo '<li><a href="profil.php"><i class="fa fa-user" aria-hidden="true"></i>' .$_SESSION["username"].'</a></li>';
+							}
+						}else{
+							echo '<li><a href="login.php">LOGIN</a></li>';
+						};
+					?>
+		      	</ul>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+		</div>
+	</header>
+	<!-- End Header -->
+    		<!-- Start Counter -->
+		<section>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="" style="margin-bottom : 50px !important;">
+                            <style>
+                                .center {
+                                display: block;
+                                margin-left: auto;
+                                margin-right: auto;
+                                width: 30%;
+                                }
+                            </style>
+							<div class="mu-counter-block w-75 p-3">
+								<div class="row ">
+                                    <img src="assets/images/avatar.png" alt="" class="rounded-circle center " style="width:25%">
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End Counter -->     
+
+         
+		<section>
+			<div class="container">
+				<form>
+					<div class="form-group">
+						<label for="inputAddress">Nama</label>
+						<input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+					</div>
+					<div class="form-group">
+						<label for="inputAddress">Username</label>
+						<input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+					</div>
+					<div class="form-group">
+						<label for="inputAddress2">Email</label>
+						<input type="email" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+					</div>
+					<div class="form-group">
+						<label for="inputAddress2">Password</label>
+						<input type="password" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+						<small id="emailHelp" class="form-text text-muted">Isi untuk mengganti password.</small>
+					</div>
+					<div class="form-group">
+						<label for="exampleFormControlSelect1">Jenis Kelamin</label>
+						<select class="form-control" id="exampleFormControlSelect1">
+							<option>Laki-laki</option>
+							<option>Perempuan</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<div class="form-check">
+						<input class="form-check-input" type="checkbox" id="gridCheck">
+						<label class="form-check-label" for="gridCheck">
+							Check me out
+						</label>
+						</div>
+					</div>
+					<button type="submit" class="btn btn-primary">Sign in</button>
+				</form>
+			</div>
+		</section>
+
+	</main>
 	
-  <div class="container">
-<div class="row gutters">
-<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-<div class="card h-100">
-	<div class="card-body">
-		<div class="account-settings">
-			<div class="user-profile">
-				<div class="user-avatar">
-					<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">
-				</div>
-				<h5 class="user-name">Yuki Hayashi</h5>
-				<h6 class="user-email">yuki@Maxwell.com</h6>
-			</div>
-			<div class="about">
-				<h5>About</h5>
-				<p>I'm Yuki. Full Stack Designer I enjoy creating user-centric, delightful and human experiences.</p>
-			</div>
-		</div>
-	</div>
-</div>
-</div>
-<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-<div class="card h-100">
-	<div class="card-body">
-		<div class="row gutters">
-			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-				<h6 class="mb-2 text-primary">Personal Details</h6>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="fullName">Full Name</label>
-					<input type="text" class="form-control" id="fullName" placeholder="Enter full name">
-				</div>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="eMail">Email</label>
-					<input type="email" class="form-control" id="eMail" placeholder="Enter email ID">
-				</div>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="phone">Phone</label>
-					<input type="text" class="form-control" id="phone" placeholder="Enter phone number">
-				</div>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="website">Website URL</label>
-					<input type="url" class="form-control" id="website" placeholder="Website url">
-				</div>
-			</div>
-		</div>
-		<div class="row gutters">
-			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-				<h6 class="mt-3 mb-2 text-primary">Address</h6>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="Street">Street</label>
-					<input type="name" class="form-control" id="Street" placeholder="Enter Street">
-				</div>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="ciTy">City</label>
-					<input type="name" class="form-control" id="ciTy" placeholder="Enter City">
-				</div>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="sTate">State</label>
-					<input type="text" class="form-control" id="sTate" placeholder="Enter State">
-				</div>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="zIp">Zip Code</label>
-					<input type="text" class="form-control" id="zIp" placeholder="Zip Code">
-				</div>
-			</div>
-		</div>
-		<div class="row gutters">
-			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-				<div class="text-right">
-					<button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
-					<button type="button" id="submit" name="submit" class="btn btn-primary">Update</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</div>
-</div>
-</div>
-
-
-
-  
 	<!-- End main content -->	
 	
     <!-- jQuery library -->
@@ -224,7 +188,7 @@
     <!-- Ajax contact form  -->
     <script type="text/javascript" src="assets/js/app.js"></script>
     <!-- Custom js -->
-	<script type="text/javascript" src="assets/js/custom.js"></script>
+	<!-- <script type="text/javascript" src="assets/js/custom.js"></script> -->
 	
     
   </body>

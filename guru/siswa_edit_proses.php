@@ -1,12 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SIP Login</title>
+    <script src="../sweet/sweetalert/sweetalert.min.js"></script>
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../	styles.css" rel="stylesheet">
+    <?php require '../koneksi.php';?> 
+  </head>
+  <body>
 <?php
-			$nama = $_POST['nama_user'];
+			$id_user = $_POST['id_user'];
+			$nama = $_POST['nama'];
 			$username = $_POST['username']; 
+			$email = $_POST['email']; 
+			$password = $_POST['password'];
+			$gender = $_POST['gender']; 
 			$role = $_POST['role']; 
-			$password = $_POST['password']; 
 
-			$sql = "UPDATE user (nama_user, username, password, role)
-			VALUES ('$nama', '$username', '$password', '$role')";
-            $sql = "UPDATE MyGuests SET lastname='Doe' WHERE id=2";
+			if(isset($password)){
+				$sql = "UPDATE user (nama, username, email, password, gender, role)
+				VALUES ('$nama', '$username', '$email','$password','$gender', '$role')";
+				$sql = "UPDATE MyGuests SET lastname='Doe' WHERE id=".$id_user."";
+			}else{
+				$sql = "UPDATE user (nama, username, email, gender, role)
+				VALUES ('$nama', '$username', '$email','$gender', '$role')";
+				$sql = "UPDATE MyGuests SET lastname='Doe' WHERE id=".$id_user."";
+			}
+			
 
 			if ($conn->query($sql) === TRUE) {
 				echo "<script>
@@ -38,3 +61,5 @@
 			$conn->close();
 
 		?>
+	</body>
+</html>

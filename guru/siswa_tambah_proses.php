@@ -12,13 +12,16 @@
   </head>
   <body>
 		<?php
-			$nama = $_POST['nama_user'];
+			$nama = $_POST['nama'];
 			$username = $_POST['username']; 
+			$email = $_POST['email']; 
+			$password = $_POST['password'];
+			$gender = $_POST['gender']; 
 			$role = $_POST['role']; 
-			$password = $_POST['password']; 
+			
 
-			$sql = "INSERT INTO user (nama_user, username, password, role)
-			VALUES ('$nama', '$username', '$password', '$role')";
+			$sql = "INSERT INTO user (nama, username, email, password, gender, role)
+			VALUES ('$nama', '$username', '$email','$password','$gender', '$role')";
 
 			if ($conn->query($sql) === TRUE) {
 				echo "<script>
@@ -29,7 +32,7 @@
 				        timer:2000,
 				        buttons:false
 				        }).then(()=>{
-				            window.location.href='index.php';
+				            window.location.href='siswa.php';
 				            })
 				    </script>";
 			} else {
@@ -41,7 +44,7 @@
 				              timer:2000,
 				              buttons:false
 				              }).then(()=>{
-				                  window.location.href='login.html';
+				                  window.location.href='siswa.php';
 				                  })
 				          </script>";
 					// echo "Error: " . $sql . "<br>" . $conn->error;
