@@ -11,59 +11,34 @@
     <?php require '../koneksi.php';?> 
   </head>
   <body>
-<?php
-			$id_user = $_POST['id_user'];
+		<?php
 			$nama = $_POST['nama'];
-			$username = $_POST['username']; 
-			$email = $_POST['email']; 
-			$password = $_POST['password'];
-			$gender = $_POST['gender']; 
-			$role = $_POST['role']; 
-
 			
 
-
-			if($password != ''){
-				$sql="UPDATE user SET 
-					nama='".$nama."', 
-					username='".$username."',
-					email='".$email."',
-					password='".$password."',
-					gender='".$gender."',
-					role='".$role."'
-					WHERE id_user='".$id_user."'";
-			}else{
-				$sql="UPDATE user SET 
-					nama='".$nama."', 
-					username='".$username."',
-					email='".$email."',
-					gender='".$gender."',
-					role='".$role."'
-					WHERE id_user='".$id_user."'";
-			}
+			$sql = "INSERT INTO mapel (nama) VALUES ('$nama')";
 
 			if ($conn->query($sql) === TRUE) {
 				echo "<script>
 				    swal({
 				        title:'Sukses',
-				        text:'Siswa berhasil ditambahkan',
+				        text:'Mata pelajaran berhasil ditambahkan',
 				        icon:'success',
 				        timer:2000,
 				        buttons:false
 				        }).then(()=>{
-				            window.location.href='siswa.php';
+				            window.location.href='mapel.php';
 				            })
 				    </script>";
 			} else {
 				      echo "<script>
 				          swal({
 				              title:'Gagal',
-				              text:'Siswa gagal ditambahkan".$conn->error."',
+				              text:'Mata pelajaran gagal ditambahkan".$conn->error."',
 				              icon:'error',
 				              timer:2000,
 				              buttons:false
 				              }).then(()=>{
-				                  window.location.href='siswa.html';
+				                  window.location.href='mapel.php';
 				                  })
 				          </script>";
 					// echo "Error: " . $sql . "<br>" . $conn->error;

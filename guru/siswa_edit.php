@@ -24,7 +24,7 @@
             <div class="white-box">
                 <form  method="post" action="siswa_edit_proses.php">
                 <div class="form-group">
-                    <input type="text" name="id_user" class="form-control" value="<?= $siswa["id_user"]?>">
+                    <input type="text" name="id_user" class="form-control" value="<?= $siswa["id_user"]?>" hidden>
                 </div>
                 <div class="form-group">
                     <label>Nama Siswa</label>

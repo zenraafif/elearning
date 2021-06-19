@@ -1,6 +1,13 @@
 <?php include 'view/header.php';?>
 <?php include 'view/sidebar.php';?>
 
+<?php require '../koneksi.php';?> 
+
+<?php
+    $sql = "SELECT * FROM mapel";
+    $result = $conn->query($sql);
+?>
+
 
  <div class="container-fluid">
     <div class="row">
@@ -16,21 +23,32 @@
                     <label for="judul">Judul</label>
                     <input type="text" name="judul" id="judul" class="form-control">
                 </div>
-                <div class="form-group mt-2 mb-2">
+                <div class="form-group">
+                    <label for="judul">Sampul</label>
+                    <input type="text" name="file_sampul" id="judul" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="judul">Materi</label>
+                    <input type="text" name="file_materi" id="judul" class="form-control">
+                </div>
+                <!-- <div class="form-group mt-2 mb-2">
                     <label for="foto-sampul">Foto Sampul</label><br>
-                    <input type="file" name="foto_sampul" class="form-control-file" id="foto-sampul">
+                    <input type="file" name="file_sampul" class="form-control-file" id="foto-sampul">
                 </div>
                 <div class="form-group mt-2 mb-2">
                     <label for="file-materi">File Materi</label><br>
                     <input type="file" name="file_materi" class="form-control-file" id="file-materi">
-                </div>
+                </div> -->
+                
                 <div class="form-group">
                     <label for="mapel">Mata Pelajaran</label>
-                    <select class="form-control" id="mapel" name="mapel">
-                        <option>IPA</option>
-                        <option>MTK</option>
+                    <select class="form-control" id="mapel" name="id_mapel">
+                        <option disabled selected>-- Pilih mata pelajaran --</option>
+                        <?php foreach($result as $res):?>
+                        <option value="<?= $res['id_mapel']?>"><?= $res['nama']?></option>
+                        <?php endforeach;?>
                     </select>
-					</div>
+				</div>
                 <div class="text-right mt-3">
                     <button type="submit" name="btn-simpan" class="btn btn-primary">Simpan</button>
                 </div>
