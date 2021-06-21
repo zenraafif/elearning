@@ -9,10 +9,10 @@
     FROM materi q
     INNER JOIN mapel a ON q.id_mapel = a.id_mapel
     WHERE id_materi = $id";
-    $result = $conn->query($sql);
+    $result_materi = $conn->query($sql);
     
-    if ($result->num_rows > 0) {
-        $materi = $result->fetch_assoc();
+    if ($result_materi->num_rows > 0) {
+        $materi = $result_materi->fetch_assoc();
 ?>
 <?php
     $sql = "SELECT * FROM mapel";

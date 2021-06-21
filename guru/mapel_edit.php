@@ -12,18 +12,6 @@
     if ($result->num_rows > 0) {
         $mapel = $result->fetch_assoc();
 ?>
-
-<?php foreach($result as $key=>$value): ?>
-            <tr>
-              <th scope="row"><?= $key+1?></th>
-              <td><?= $value['nama']; ?></td>
-              <td>
-                <a type="button" class="btn btn-primary" href="mapel_detail.php?id=<?= $value['id_mapel']; ?>"><i class="far fa-eye"></i></a>
-                <a type="button" class="btn btn-success" href="mapel_edit.php?id=<?= $value['id_mapel']; ?>"><i class="fas fa-edit"></i></a>
-              <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-              </td>
-            </tr>
-          <?php endforeach; ?>
           
  <div class="container-fluid">
     <div class="row">

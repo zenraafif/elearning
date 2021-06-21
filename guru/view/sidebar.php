@@ -7,7 +7,7 @@
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="index.php">Dashboard</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="siswa.php">Siswa</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="materi.php">Materi</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="quiz.php">Quiz</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="kuis.php">Kuis</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="mapel.php">Mata Pelajaran</a>
                 </div>
             </div>
