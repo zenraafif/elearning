@@ -13,8 +13,8 @@
   <body>
 		<?php
 
-			$id = $_GET["id"];
-
+			$id_pertanyaan = $_POST['id_pertanyaan'];
+			$id_kuis = $_POST['id_kuis'];
 			$pertanyaan = $_POST['pertanyaan'];
 			$pilihan_a = $_POST['pilihan_a'];
 			$pilihan_b = $_POST['pilihan_b'];
@@ -22,34 +22,40 @@
 			$pilihan_d = $_POST['pilihan_d'];
 			$skor = $_POST['skor'];
 			$kunci_jawaban = $_POST['kunci_jawaban'];
-			$id_kuis = $_POST['id_kuis'];
 			
 
-			// $sql = "INSERT INTO kuis_pertanyaan (pertanyaan, pilihan_a, pilihan_b, pilihan_c, pilihan_d, skor, kunci_jawaban) VALUES ('$pertanyaan', '$pilihan_a', '$pilihan_b', '$pilihan_c', '$pilihan_d', '$skor', '$kunci_jawaban)";
-            $sql = "INSERT INTO `kuis_pertanyaan` ( `id_kuis`, `pertanyaan`, `pilihan_a`, `pilihan_b`, `pilihan_c`, `pilihan_d`, `kunci_jawaban`, `skor`) 
-			VALUES ('$id_kuis', '$pertanyaan', '$pilihan_a', '$pilihan_b', '$pilihan_c', '$pilihan_d', '$kunci_jawaban', '$skor')";
+            $sql="UPDATE kuis_pertanyaan SET 
+					pertanyaan='".$pertanyaan."', 
+					pilihan_a='".$pilihan_a."',
+					pilihan_b='".$pilihan_b."',
+					pilihan_c='".$pilihan_c."',
+					pilihan_d='".$pilihan_d."',
+					skor='".$skor."',
+					kunci_jawaban='".$kunci_jawaban."'
+					WHERE id_pertanyaan='".$id_pertanyaan."'";
+
 			if ($conn->query($sql) === TRUE) {
 				echo "<script>
 				    swal({
 				        title:'Sukses',
-				        text:'Pertanyaan kuis berhasil ditambahkan',
+				        text:'Pertanyaan berhasil diubah',
 				        icon:'success',
 				        timer:2000,
 				        buttons:false
 				        }).then(()=>{
-				            window.location.href='kuis_pertanyaan.php?id=".$id."';
+				            window.location.href='kuis_pertanyaan.php?id=".$id_kuis."';
 				            })
 				    </script>";
 			} else {
 				      echo "<script>
 				          swal({
 				              title:'Gagal',
-				              text:'Pertanyaan kuis gagal ditambahkan".$conn->error."',
+				              text:'Pertanyaan gagal diubah".$conn->error."',
 				              icon:'error',
 				              timer:2000,
 				              buttons:false
 				              }).then(()=>{
-				                  window.location.href='kuis_pertanyaan.php';
+				                  window.location.href='kuis_pertanyaan.php?id=".$id_kuis."';
 				                  })
 				          </script>";
 					// echo "Error: " . $sql . "<br>" . $conn->error;

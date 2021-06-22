@@ -3,12 +3,18 @@
 
 <?php require '../koneksi.php';?> 
 <?php
-    $id = $_GET["id"];
+
+    if(isset($_GET["id"])){
+      $id = $_GET["id"];
+    }else{
+      echo "<h3 class='m-3'>Data tidak ditemukan</h3>";
+      exit;
+    }
     
     $sql_quiz = "SELECT * FROM kuis WHERE id_kuis = $id";
     $kuis = $conn->query($sql_quiz);
 
-    $sql_pertanyaan = "SELECT * FROM kuis_pertanyaan";
+    $sql_pertanyaan = "SELECT * FROM kuis_pertanyaan WHERE id_kuis='$id'";
     $pertanyaan = $conn->query($sql_pertanyaan);
     
 
@@ -18,11 +24,16 @@
           
  <div class="container-fluid">
     <div class="row">
-        <div class="col-12 mt-4 ">
-            <h3><?= $detail_kuis['judul_kuis']?></h3>
-            <h6>Mulai : <?= $detail_kuis['tanggal_mulai']?></h6>
-            <h6>Selesai : <?= $detail_kuis['tanggal_selesai']?></h6>
-            <h6>Waktu : <?= $detail_kuis['waktu']?> Menit</h6>
+        <div class="col-5 mt-3 mb-2">
+          <div class="card">
+            <h5 class="card-header bg-secondary text-light"><?= $detail_kuis['judul_kuis']?></h5>
+            <div class="card-body">
+              <p class="card-text">Mulai : <?= $detail_kuis['tanggal_mulai']?></p>
+              <p class="card-text">Selesai : <?= $detail_kuis['tanggal_selesai']?></p>
+              <p class="card-text">Waktu : <?= $detail_kuis['waktu']?> Menit</p>
+              <a href="kuis_pertanyaan_tambah.php?id=<?= $detail_kuis['id_kuis']; ?>">
+            </div>
+          </div>
         </div>
     </div>
     <div class="row">
@@ -47,9 +58,10 @@
           <?php foreach($pertanyaan as $key=>$value): ?>
             <tr>
               <th scope="row"><?= $key+1?></th>
-              <td><?= $value['judul_kuis']; ?></td>
+              <td><?= $value['pertanyaan']; ?></td>
+              <td><?= $value['skor']; ?></td>
               <td>
-                <a type="button" class="btn btn-success" href="kuis_pertanyaan_edit.php?id=<?= $value['id_mapel']; ?>"><i class="fas fa-edit"></i></a>
+                <a type="button" class="btn btn-success" href="kuis_pertanyaan_edit.php?id=<?= $value['id_pertanyaan']; ?>"><i class="fas fa-edit"></i></a>
               <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
               </td>
             </tr>
@@ -61,7 +73,7 @@
 </div>
 
 <?php } else { ?> 
-    data ga ada
+  <h3 class='m-3'>Data tidak ditemukan</h3>
 <?php }?>
 
 <?php include 'view/footer.php';?>

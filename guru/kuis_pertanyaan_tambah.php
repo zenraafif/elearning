@@ -14,7 +14,8 @@
     <div class="row">
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
             <div class="white-box">
-                <form method="post" action="kuis_pertanyaan_tambah_proses.php">
+                <form method="post" action="kuis_pertanyaan_tambah_proses.php?id=<?= $id; ?>">
+                    <input value="<?= $id; ?>" hidden name="id_kuis"></input>
                 <div class="form-group">
                     <label>Pertanyaan</label>
                     <textarea name="pertanyaan" class="form-control"></textarea>

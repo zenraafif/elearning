@@ -38,7 +38,7 @@
 </div>
 
 <?php } else { ?> 
-    data tidak ditemukan
+    <h3 class='m-3'>Data tidak ditemukan</h3>
 <?php }?>
 
 <?php include 'view/footer.php';?>
