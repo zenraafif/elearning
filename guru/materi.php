@@ -41,7 +41,7 @@
               <th scope="row"><?= $key+1?></th>
               <td><?= $value['judul']; ?></td>
               <td><?= $value['nama']; ?></td>
-              <td><?= $value['file_sampul']; ?></td>
+              <td><img class="w-50" src="../<?=$value['file_sampul']?>" alt="image" ></td>
               <td>
                 <a type="button" class="btn btn-primary" href="materi_detail.php?id=<?= $value['id_materi']; ?>"><i class="far fa-eye"></i></a>
                 <a type="button" class="btn btn-success" href="materi_edit.php?id=<?= $value['id_materi']; ?>"><i class="fas fa-edit"></i></a>

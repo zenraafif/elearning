@@ -22,27 +22,12 @@
   $data = mysqli_fetch_assoc($row);
   $cek = mysqli_num_rows($row);
 
-  if ($data['role'] == $_POST['role']) {
+  if (isset($data['role']) && $data['role'] == $_POST['role']) {
     if($cek > 0){
-        if($data['role'] == 'admin'){
-            $_SESSION['role'] = 'admin';
-            $_SESSION['username'] = $data['username'];
-            $_SESSION['user_id'] = $data['id_user'];
-            echo "<script>
-                  swal({
-                      title:'Sukses',
-                      text:'Login Admin Berhasil',
-                      icon:'success',
-                      timer:2000,
-                      buttons:false
-                      }).then(()=>{
-                          window.location.href='admin';
-                          })
-                  </script>";
-        }else if($data['role'] == 'guru'){
+        if($data['role'] == 'guru'){
             $_SESSION['role'] = 'guru';
             $_SESSION['username'] = $data['username'];
-            $_SESSION['user_id'] = $data['id_user'];
+            $_SESSION['id_user'] = $data['id_user'];
             echo "<script>
                   swal({
                       title:'Sukses',
@@ -57,16 +42,16 @@
         }else if($data['role'] == 'siswa'){
             $_SESSION['role'] = 'siswa';
             $_SESSION['username'] = $data['username'];
-            $_SESSION['user_id'] = $data['id_user'];
+            $_SESSION['id_user'] = $data['id_user'];
             echo "<script>
                   swal({
                       title:'Sukses',
-                      text:'Login Murid Berhasil',
+                      text:'Login Siswa Berhasil',
                       icon:'success',
                       timer:2000,
                       buttons:false
                       }).then(()=>{
-                          window.location.href='murid.html';
+                          window.location.href='index.php';
                           })
                   </script>";
         }
@@ -79,7 +64,7 @@
                 timer:2000,
                 buttons:false
                 }).then(()=>{
-                    window.location.href='login.html';
+                    window.location.href='login.php';
                     })
             </script>";
     }
@@ -92,7 +77,7 @@
               timer:2000,
               buttons:false
               }).then(()=>{
-                  window.location.href='login.html';
+                  window.location.href='login.php';
                   })
           </script>";
   }

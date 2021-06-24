@@ -44,7 +44,8 @@
                     judul='".$judul."',
                     file_materi='".$file_materi."',
                     file_sampul='".$file_sampul."',
-                    file_materi='".$file_materi."'
+                    file_materi='".$file_materi."',
+					id_mapel='".$id_mapel."'
                     WHERE id_materi='".$id_materi."'";
             }
 

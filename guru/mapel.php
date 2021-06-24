@@ -6,7 +6,6 @@
 <?php
     $sql = "SELECT * FROM mapel";
     $result = $conn->query($sql);
-
 ?>
 
 <div class="container">

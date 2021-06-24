@@ -40,6 +40,20 @@
 	<?php
 		session_start();
 	?>
+	
+	<?php require 'koneksi.php';?> 
+
+	<?php
+		$sql_materi = "SELECT q.*, a.* 
+		FROM materi q
+		INNER JOIN mapel a ON q.id_mapel = a.id_mapel";
+		$materi = $conn->query($sql_materi);
+	?>
+		
+	<?php
+		$sql_mapel = "SELECT * FROM mapel";
+		$mapel = $conn->query($sql_mapel);
+	?>
   </head>
   <body>
 
@@ -78,10 +92,10 @@
 					<!-- array(3) { 
 						["role"]=> string(4) "guru" 
 						["username"]=> string(5) "guru1" 
-						["user_id"]=> string(1) "3" } -->
+						["id_user"]=> string(1) "3" } -->
 					<?php
 						
-						if(isset($_SESSION["user_id"])){
+						if(isset($_SESSION["id_user"])){
 							if($_SESSION["role"] == "guru"){
 								echo '<li><a href="guru"><i class="fa fa-user" aria-hidden="true"></i>' .$_SESSION["username"].'</a></li>';
 							}else{
@@ -300,244 +314,35 @@
 							<div class="mu-portfolio-filter-area">
 								<ul class="mu-simplefilter">
 					                <li class="active" data-filter="all">All</li>
-					                <li data-filter="1">Matematika</li>
-					                <li data-filter="2">Fisika</li>
-					                <li data-filter="3">Biologi</li>
-					                <li data-filter="4">Kimia</li>
-									<li data-filter="5">Ekonomi</li>
+									<?php foreach($mapel as $mpl): ?>
+					                <li data-filter="<?= $mpl['id_mapel']?>"><?= $mpl['nama']?></li>
+									<?php endforeach; ?>
 					            </ul>
 							</div>
 
 							<!-- Start Materi Content -->
 							<div class="mu-portfolio-content">
 								<div class="filtr-container">
-
-					                <div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="1">
-					                   <a href="#" data-toggle="modal" data-target=".a001">
-						                   	<img class="img-responsive" src="assets/images/materi/math/baris-deres.JPG" alt="image">
+<?php foreach($materi as $mtr): ?>	
+					                <div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="<?=$mtr['id_mapel']?>">
+					                   <a href="#" data-toggle="modal" data-target=".a0<?=$mtr['id_materi']?>">
+						                   	<img class="img-responsive" src="<?=$mtr['file_sampul']?>" alt="image">
 						                   	<div class="mu-filter-item-content">
-						                    	<h4 class="mu-filter-item-title">Baris dan Deret</h4>
+						                    	<h4 class="mu-filter-item-title"><?=$mtr['judul']?></h4>
 						                    </div>
 					                   </a>
 					                </div>
 
-					                <div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="2">
-					                    <a href="#" data-toggle="modal" data-target=".a002">
-					                    	<img class="img-responsive" src="assets/images/materi/fisika/alat-optik.JPG" alt="image">
-						                    <div class="mu-filter-item-content">
-						                    	<h4 class="mu-filter-item-title">Alat Optik</h4>
-						                    </div>
-					                    </a>
-					                </div>
+													<div class="modal fade a0<?=$mtr['id_materi']?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+														<div class="modal-dialog modal-lg">
+															<div class="modal-body">
+																<center><embed type="application/pdf" src="<?=$mtr['file_materi']?>" width="100%" height="800"></embed></center>
+																<center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
+															</div>
+														</div>
+													</div>
+<?php endforeach; ?>
 
-									<div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="2">
-					                    <a href="" data-toggle="modal" data-target=".a003">
-					                    	<img class="img-responsive" src="assets/images/materi/fisika/Momentum dan Impuls.JPG" alt="image">
-						                    <div class="mu-filter-item-content">
-						                    	<h4 class="mu-filter-item-title">Momentum dan Impuls</h4>
-						                    </div>
-					                    </a>
-					                </div>
-
-									<div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="2">
-					                    <a href="#" data-toggle="modal" data-target=".a004">
-					                    	<img class="img-responsive" src="assets/images/materi/fisika/Hukum Gerak Newton.JPG" alt="image">
-						                    <div class="mu-filter-item-content">
-						                    	<h4 class="mu-filter-item-title">Hukum Gerak Newton</h4>
-						                    </div>
-					                    </a>
-					                </div>
-
-									<div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="2">
-					                    <a href="#" data-toggle="modal" data-target=".a005">
-					                    	<img class="img-responsive" src="assets/images/materi/fisika/Induksi Magnet.JPG" alt="image">
-						                    <div class="mu-filter-item-content">
-						                    	<h4 class="mu-filter-item-title">Induksi Magnet</h4>
-						                    </div>
-					                    </a>
-					                </div>
-
-									<div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="1">
-					                    <a href="#" data-toggle="modal" data-target=".a006">
-					                    	<img class="img-responsive" src="assets/images/materi/math/Vektor.JPG" alt="image">
-						                    <div class="mu-filter-item-content">
-						                    	<h4 class="mu-filter-item-title">Vektor</h4>
-						                    </div>
-					                    </a>
-					                </div>
-									
-					                <div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="3">
-					                    <a href="#" data-toggle="modal" data-target=".a007">
-					                    	<img class="img-responsive" src="assets/images/materi/biologi/Makanan.JPG" alt="image">
-						                    <div class="mu-filter-item-content">
-						                    	<h4 class="mu-filter-item-title">Makanan</h4>
-						                    </div>
-					                    </a>
-					                </div>
-
-									<div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="1">
-					                    <a href="#" data-toggle="modal" data-target=".a008">
-					                    	<img class="img-responsive" src="assets/images/materi/math/Statistika.JPG" alt="image">
-						                    <div class="mu-filter-item-content">
-						                    	<h4 class="mu-filter-item-title">Statistika</h4>
-						                    </div>
-					                    </a>
-					                </div>
-
-					                <div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="4">
-					                    <a href="#" data-toggle="modal" data-target=".a009">
-					                    	<img class="img-responsive" src="assets/images/materi/kimia/Titrasi-AsamBasa.JPG" alt="image">
-						                    <div class="mu-filter-item-content">
-						                    	<h4 class="mu-filter-item-title">Titrasi Asam Basa</h4>
-						                    </div>
-					                    </a>
-					                </div>
-
-									<div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="4">
-					                    <a href="#" data-toggle="modal" data-target=".a010">
-					                    	<img class="img-responsive" src="assets/images/materi/kimia/Termokimia.JPG" alt="image">
-						                    <div class="mu-filter-item-content">
-						                    	<h4 class="mu-filter-item-title">Termokimia</h4>
-						                    </div>
-					                    </a>
-					                </div>
-
-									<div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="4">
-					                    <a href="#" data-toggle="modal" data-target=".a011">
-					                    	<img class="img-responsive" src="assets/images/materi/kimia/Kesetimbangan Kimia.JPG" alt="image">
-						                    <div class="mu-filter-item-content">
-						                    	<h4 class="mu-filter-item-title">Kesetimbangan Kimia</h4>
-						                    </div>
-					                    </a>
-					                </div>
-
-									<div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="4">
-					                    <a href="#" data-toggle="modal" data-target=".a012">
-					                    	<img class="img-responsive" src="assets/images/materi/kimia/Teori Asam Basa.JPG" alt="image">
-						                    <div class="mu-filter-item-content">
-						                    	<h4 class="mu-filter-item-title">Teori Asam Basa</h4>
-						                    </div>
-					                    </a>
-					                </div>
-									
-									<div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="3">
-					                    <a href="#" data-toggle="modal" data-target=".a013">
-					                    	<img class="img-responsive" src="assets/images/materi/biologi/Sistem Sirkulasi.JPG" alt="image">
-						                    <div class="mu-filter-item-content">
-						                    	<h4 class="mu-filter-item-title">Sistem Sirkulasi</h4>
-						                    </div>
-					                    </a>
-					                </div>
-
-									<div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="5">
-					                    <a href="#" data-toggle="modal" data-target=".a014">
-					                    	<img class="img-responsive" src="assets/images/materi/ekonomi/Permintaan dan Penawaran.JPG" alt="image">
-						                    <div class="mu-filter-item-content">
-						                    	<h4 class="mu-filter-item-title">Permintaan dan Penawaran</h4>
-						                    </div>
-					                    </a>
-					                </div>
-
-									<div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="5">
-					                   <a href="#" data-toggle="modal" data-target=".a015">
-					                    	<img class="img-responsive" src="assets/images/materi/ekonomi/Bentuk - Bentuk Pasar.JPG" alt="image">
-						                    <div class="mu-filter-item-content">
-						                    	<h4 class="mu-filter-item-title">Bentuk - Bentuk Pasar</h4>
-						                    </div>
-					                    </a>
-					                </div>
-
-									<div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="5">
-					                    <a href="#" data-toggle="modal" data-target=".a016">
-					                    	<img class="img-responsive" src="assets/images/materi/ekonomi/Permasalahan Ekonomi.JPG" alt="image">
-						                    <div class="mu-filter-item-content">
-						                    	<h4 class="mu-filter-item-title">Permasalahan Ekonomi</h4>
-						                    </div>
-					                    </a>
-					                </div>
-
-									<div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="5">
-					                    <a href="#" data-toggle="modal" data-target=".a017">
-					                    	<img class="img-responsive" src="assets/images/materi/ekonomi/Pasar Modal.JPG" alt="image">
-						                    <div class="mu-filter-item-content">
-						                    	<h4 class="mu-filter-item-title">Pasar Modal</h4>
-						                    </div>
-					                    </a>
-					                </div>
-
-					                <div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="3">
-										<a href="#" data-toggle="modal" data-target=".a018">
-					                    	<img class="img-responsive" src="assets/images/materi/biologi/Katabolisme.JPG" alt="image">
-						                    <div class="mu-filter-item-content">
-						                    	<h4 class="mu-filter-item-title">Katabolisme</h4>
-						                    </div>
-					                   </a>
-					                </div>
-
-					                <div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="1">
-					                    <a href="#" data-toggle="modal" data-target=".a019">
-					                    	<img class="img-responsive" src="assets/images/materi/math/turunan.JPG" alt="image">
-						                    <div class="mu-filter-item-content">
-						                    	<h4 class="mu-filter-item-title">Turunan</h4>
-						                    </div>
-					                    </a>
-					                </div>
-
-									<div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="3">
-					                    <a href="#" data-toggle="modal" data-target=".a020">
-					                    	<img class="img-responsive" src="assets/images/materi/biologi/Pembelahan Sel.JPG" alt="image">
-						                    <div class="mu-filter-item-content">
-						                    	<h4 class="mu-filter-item-title">Pembelahan Sel</h4>
-						                    </div>
-					                    </a>
-					                </div>
-
-					                <div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="1">
-					                    <a href="#" data-toggle="modal" data-target=".a021">
-					                    	<img class="img-responsive" src="assets/images/materi/math/penerapan-turunan.JPG" alt="image">
-						                    <div class="mu-filter-item-content">
-						                    	<h4 class="mu-filter-item-title">Penerapan Turunan</h4>
-						                    </div>
-					                    </a>
-					                </div>
-
-									<div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="2">
-					                    <a href="#" data-toggle="modal" data-target=".a022">
-					                    	<img class="img-responsive" src="assets/images/materi/fisika/fisika-atom.JPG" alt="image">
-						                    <div class="mu-filter-item-content">
-						                    	<h4 class="mu-filter-item-title">Fisika Atom</h4>
-						                    </div>
-					                    </a>
-					                </div>
-
-									<div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="3">
-					                    <a href="#" data-toggle="modal" data-target=".a023">
-					                    	<img class="img-responsive" src="assets/images/materi/biologi/Sistem Saraf.JPG" alt="image">
-						                    <div class="mu-filter-item-content">
-						                    	<h4 class="mu-filter-item-title">Sistem Saraf</h4>
-						                    </div>
-					                    </a>
-					                </div>
-
-									<div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="5">
-					                    <a href="#" data-toggle="modal" data-target=".a024">
-					                    	<img class="img-responsive" src="assets/images/materi/ekonomi/Sistem Perekonomian.JPG" alt="image">
-						                    <div class="mu-filter-item-content">
-						                    	<h4 class="mu-filter-item-title">Sistem Perekonomian</h4>
-						                    </div>
-					                    </a>
-					                </div>
-
-									<div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="4">
-					                    <a href="#" data-toggle="modal" data-target=".a025">
-					                    	<img class="img-responsive" src="assets/images/materi/kimia/Volta.JPG" alt="image">
-						                    <div class="mu-filter-item-content">
-						                    	<h4 class="mu-filter-item-title">Sel Volta</h4>
-						                    </div>
-					                    </a>
-					                </div>
-
-					            </div>
 							</div>
 							<!-- End Materi Content -->
 
@@ -549,230 +354,7 @@
 		<!-- End Materi -->
 
 		<!-- Modal Materi-->
-		<div class="modal fade a001" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
-		    <div class="modal-body">
-		      <center><embed type="application/pdf" src="materi/baris_mat2_3.pdf" width="100%" height="800"></embed></center>
-		      <center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
-		    </div>
-		  </div>
-		</div>
-
-		<div class="modal fade a002" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
-		    <div class="modal-body">
-		      <center><embed type="application/pdf" src="materi/altop_fis1_2.pdf" width="100%" height="800"></embed></center>
-		      <center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
-		    </div>
-		  </div>
-		</div>
-
-		<div class="modal fade a003" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
-		    <div class="modal-body">
-		      <center><embed type="application/pdf" src="materi/moment_fis2_2.pdf" width="100%" height="800"></embed></center>
-		      <center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
-		    </div>
-		  </div>
-		</div>
-
-		<div class="modal fade a004" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
-		    <div class="modal-body">
-		      <center><embed type="application/pdf" src="materi/newton_fis1.pdf" width="100%" height="800"></embed></center>
-		      <center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
-		    </div>
-		  </div>
-		</div>
-
-		<div class="modal fade a005" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
-		    <div class="modal-body">
-		      <center><embed type="application/pdf" src="materi/mgnt_fis3_2.pdf" width="100%" height="800"></embed></center>
-		      <center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
-		    </div>
-		  </div>
-		</div>
-
-		<div class="modal fade a006" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
-		    <div class="modal-body">
-		      <center><embed type="application/pdf" src="materi/vektor_mat3.pdf" width="100%" height="800"></embed></center>
-		      <center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
-		    </div>
-		  </div>
-		</div>
-
-		<div class="modal fade a007" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
-		    <div class="modal-body">
-		      <center><embed type="application/pdf" src="materi/makan_bio2_8.pdf" width="100%" height="800"></embed></center>
-		      <center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
-		    </div>
-		  </div>
-		</div>
-
-		<div class="modal fade a008" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
-		    <div class="modal-body">
-		      <center><embed type="application/pdf" src="materi/stati_mat2_2.pdf" width="100%" height="800"></embed></center>
-		      <center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
-		    </div>
-		  </div>
-		</div>
-
-		<div class="modal fade a009" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
-		    <div class="modal-body">
-		      <center><embed type="application/pdf" src="materi/trasab_kim3_2.pdf" width="100%" height="800"></embed></center>
-		      <center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
-		    </div>
-		  </div>
-		</div>
-
-		<div class="modal fade a010" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
-		    <div class="modal-body">
-		      <center><embed type="application/pdf" src="materi/termo_kim2_3.pdf" width="100%" height="800"></embed></center>
-		      <center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
-		    </div>
-		  </div>
-		</div>
-
-		<div class="modal fade a011" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
-		    <div class="modal-body">
-		      <center><embed type="application/pdf" src="materi/stimb_kim2_5.pdf" width="100%" height="800"></embed></center>
-		      <center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
-		    </div>
-		  </div>
-		</div>
-
-		<div class="modal fade a012" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-lg">
-			  <div class="modal-body">
-				<center><embed type="application/pdf" src="materi/teoab_kim3_3.pdf" width="100%" height="800"></embed></center>
-				<center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
-			  </div>
-			</div>
-		  </div>
-
-		<div class="modal fade a013" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
-		    <div class="modal-body">
-		      <center><embed type="application/pdf" src="materi/sirku_bio2_7.pdf" width="100%" height="800"></embed></center>
-		      <center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
-		    </div>
-		  </div>
-		</div>
-
-		<div class="modal fade a014" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
-		    <div class="modal-body">
-		      <center><embed type="application/pdf" src="materi/pnwrn_eko1_2.pdf" width="100%" height="800"></embed></center>
-		      <center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
-		    </div>
-		  </div>
-		</div>
-
-		<div class="modal fade a015" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
-		    <div class="modal-body">
-		      <center><embed type="application/pdf" src="materi/pasar_eko1_1.pdf" width="100%" height="800"></embed></center>
-		      <center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
-		    </div>
-		  </div>
-		</div>
-
-		<div class="modal fade a016" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
-		    <div class="modal-body">
-		      <center><embed type="application/pdf" src="materi/mslek_eko1_2.pdf" width="100%" height="800"></embed></center>
-		      <center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
-		    </div>
-		  </div>
-		</div>
-
-		<div class="modal fade a017" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
-		    <div class="modal-body">
-		      <center><embed type="application/pdf" src="materi/modal_eko3_1.pdf" width="100%" height="800"></embed></center>
-		      <center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
-		    </div>
-		  </div>
-		</div>
-
-		<div class="modal fade a018" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
-		    <div class="modal-body">
-		      <center><embed type="application/pdf" src="materi/katab_bio3_3.pdf" width="100%" height="800"></embed></center>
-		      <center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
-		    </div>
-		  </div>
-		</div>
-
-		<div class="modal fade a019" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
-		    <div class="modal-body">
-		      <center><embed type="application/pdf" src="materi/diff_mat41.pdf" width="100%" height="800"></embed></center>
-		      <center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
-		    </div>
-		  </div>
-		</div>
-
-		<div class="modal fade a020" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
-		    <div class="modal-body">
-		      <center><embed type="application/pdf" src="materi/sel_bio4_1.pdf" width="100%" height="800"></embed></center>
-		      <center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
-		    </div>
-		  </div>
-		</div>
-
-		<div class="modal fade a021" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
-		    <div class="modal-body">
-		      <center><embed type="application/pdf" src="materi/diffp_mat4.pdf" width="100%" height="800"></embed></center>
-		      <center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
-		    </div>
-		  </div>
-		</div>
-
-		<div class="modal fade a022" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
-		    <div class="modal-body">
-		      <center><embed type="application/pdf" src="materi/atom_fis4.pdf" width="100%" height="800"></embed></center>
-		      <center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
-		    </div>
-		  </div>
-		</div>
-
-		<div class="modal fade a023" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
-		    <div class="modal-body">
-		      <center><embed type="application/pdf" src="materi/saraf_bio3_8.pdf" width="100%" height="800"></embed></center>
-		      <center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
-		    </div>
-		  </div>
-		</div>
-
-		<div class="modal fade a024" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
-		    <div class="modal-body">
-		      <center><embed type="application/pdf" src="materi/steko_eko1_1.pdf" width="100%" height="800"></embed></center>
-		      <center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
-		    </div>
-		  </div>
-		</div>
-
-		<div class="modal fade a025" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
-		    <div class="modal-body">
-		      <center><embed type="application/pdf" src="materi/volta_kim2_4.pdf" width="100%" height="800"></embed></center>
-		      <center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
-		    </div>
-		  </div>
-		</div>
+		
 		<!-- End Modal-->
 
 		<!-- Start About -->

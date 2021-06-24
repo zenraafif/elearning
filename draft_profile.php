@@ -38,27 +38,8 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 	<?php
-		require 'koneksi.php';
 		session_start();
-		$id = $_SESSION['id_user'];
-		$sql = "SELECT * FROM user WHERE id_user = $id and role = 'siswa'";
-		$result = $conn->query($sql);
-
-		if ($result->num_rows > 0) {
-			$siswa = $result->fetch_assoc();
-		}else{
-			exit;
-		}
 	?>
-
-	<style>
-		.center {
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
-		width: 30%;
-		}
-	</style>
   </head>
   <body>
 
@@ -117,12 +98,12 @@
 		</div>
 	</header>
 	<!-- End Header -->
-    	<!-- Start Counter -->
-			<section>
-			<div class="container-fluid" style="margin-bottom:2%; padding-top:4%">
+    		<!-- Start Counter -->
+		<section>
+			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-12">
-						<div>
+						<div class="" style="margin-bottom : 50px !important;">
                             <style>
                                 .center {
                                 display: block;
@@ -131,76 +112,61 @@
                                 width: 30%;
                                 }
                             </style>
-							<div class="mu-counter-block w-25 p-3">
+							<div class="mu-counter-block w-75 p-3">
 								<div class="row ">
-                                    <img src="assets/images/avatar.png" alt="" class="rounded-circle center " style="width:18%">
+                                    <img src="assets/images/avatar.png" alt="" class="rounded-circle center " style="width:25%">
 								</div>
 							</div>
+
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-		<!-- End Counter -->   
+		<!-- End Counter -->     
 
          
 		<section>
-			<div class="container" style="padding-top: 4%; padding-bottom: 10%">
-				<div class="card mt-5 center" style="width: 80%;">
-					<ul class="list-group list-group-flush">
-						<li class="list-group-item"><b>Nama :</b> <?php echo $siswa['nama']?></li>
-						<li class="list-group-item"><b>Username :</b> <?php echo $siswa['username']?></li>
-						<li class="list-group-item"><b>Email :</b> <?php echo $siswa['email']?></li>
-						<li class="list-group-item"><b>Gender :</b> <?php echo $siswa['gender']?></li>
-					</ul>
-					<button type="button" class="btn btn-success btn-lg btn-block center" style="width:60% !important">Edit Data</button>
-					<button type="button" class="btn btn-primary btn-lg btn-block center" style="width:60% !important">Edit Data</button>
-				</div>
-			</div>
-		</section>
-
-		<!-- Start Contact -->
-		<section id="mu-contact">
 			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="mu-contact-area">
+				<form>
+					<div class="form-group">
+						<label for="inputAddress">Nama</label>
+						<input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+					</div>
+					<div class="form-group">
+						<label for="inputAddress">Username</label>
+						<input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+					</div>
+					<div class="form-group">
+						<label for="inputAddress2">Email</label>
+						<input type="email" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+					</div>
+					<div class="form-group">
+						<label for="inputAddress2">Password</label>
+						<input type="password" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+						<small id="emailHelp" class="form-text text-muted">Isi untuk mengganti password.</small>
+					</div>
+					<div class="form-group">
+						<label for="exampleFormControlSelect1">Jenis Kelamin</label>
+						<select class="form-control" id="exampleFormControlSelect1">
+							<option>Laki-laki</option>
+							<option>Perempuan</option>
+						</select>
+					</div>
 
-							<div class="mu-contact-header">
-								<h2 class="mu-heading-title">CONTACT <span>US</span></h2>
-								<span class="mu-header-dot"></span>
-							</div>
-
-							<!-- Start Contact Content -->
-							<div class="mu-contact-content">
-								<div class="row">	
-									<div class="col-md-12" style="text-align:center;">
-										<div class="mu-contact-right">
-											<h4>Universitas Negeri Semarang</h4>
-											<address>
-												<p><i class="icon-location-pin"></i>Jl. Sekaran, Gunung Pati, Semarang, Prov. Jawa Tengah </p>
-												<p><i class="icon-phone"></i>024-8508093</p>
-											</address>
-											<div class="mu-social-media">
-												<a href="#"><i class="icon-social-facebook"></i></a>
-												<a href="#"><i class="icon-social-twitter"></i></a>
-												<a href="#"><i class="icon-social-google"></i></a>
-												<a href="#"><i class="icon-social-linkedin"></i></a>
-												<a href="#"><i class="icon-social-youtube"></i></a>
-											</div>
-										</div>
-									</div>	
-
-								</div>
-							</div>
-							<!-- End Contact Content -->
-
+					<div class="form-group">
+						<div class="form-check">
+						<input class="form-check-input" type="checkbox" id="gridCheck">
+						<label class="form-check-label" for="gridCheck">
+							Check me out
+						</label>
 						</div>
 					</div>
-				</div>
+					<button type="submit" class="btn btn-primary">Sign in</button>
+				</form>
 			</div>
 		</section>
-		<!-- End Contact -->
 
 	</main>
 	
