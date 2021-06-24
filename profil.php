@@ -153,8 +153,8 @@
 						<li class="list-group-item"><b>Email :</b> <?php echo $siswa['email']?></li>
 						<li class="list-group-item"><b>Gender :</b> <?php echo $siswa['gender']?></li>
 					</ul>
-					<button type="button" class="btn btn-success btn-lg btn-block center" style="width:60% !important">Edit Data</button>
-					<button type="button" class="btn btn-primary btn-lg btn-block center" style="width:60% !important">Edit Data</button>
+					<button type="button" class="btn btn-success btn-lg btn-block center" style="width:60% !important">Edit Profil</button>
+					<button type="button" class="btn btn-primary btn-lg btn-block center" style="width:60% !important">Kuis Yang Sudah Selesai</button>
 				</div>
 			</div>
 		</section>

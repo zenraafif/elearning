@@ -53,6 +53,18 @@
 	<?php
 		$sql_mapel = "SELECT * FROM mapel";
 		$mapel = $conn->query($sql_mapel);
+		
+		$sql_male = "SELECT * FROM user WHERE gender = 'laki-laki' AND role = 'siswa'";
+		$male = $conn->query($sql_male);
+		$count_male = $male->num_rows;
+
+		$sql_famale = "SELECT * FROM user WHERE gender = 'perempuan' AND role = 'siswa'";
+		$famale = $conn->query($sql_famale);
+		$count_famale = $famale->num_rows;
+
+		$sql_teacher = "SELECT * FROM user WHERE role = 'guru'";
+		$teacher = $conn->query($sql_teacher);
+		$count_teacher = $teacher->num_rows;
 	?>
   </head>
   <body>
@@ -249,7 +261,7 @@
 									<div class="col-md-3 col-sm-6">
 										<div class="mu-single-counter">
 											<i class="icon-symbol-male"></i>
-											<div class="counter-value" data-count="1079">0</div>
+											<div class="counter-value" data-count="<?=$count_male?>">0</div>
 											<h5 class="mu-counter-name">Male Student</h5>
 										</div>
 									</div>
@@ -259,7 +271,7 @@
 									<div class="col-md-3 col-sm-6">
 										<div class="mu-single-counter">
 											<i class="icon-symbol-female"></i>
-											<div class="counter-value" data-count="557">0</div>
+											<div class="counter-value" data-count="<?=$count_famale?>">0</div>
 											<h5 class="mu-counter-name">Female Student</h5>
 										</div>
 									</div>
@@ -269,7 +281,7 @@
 									<div class="col-md-3 col-sm-6">
 										<div class="mu-single-counter">
 											<i class="icon-people"></i>
-											<div class="counter-value" data-count="87">0</div>
+											<div class="counter-value" data-count="<?=$count_teacher?>">0</div>
 											<h5 class="mu-counter-name">Teacher</h5>
 										</div>
 									</div>
@@ -323,7 +335,8 @@
 							<!-- Start Materi Content -->
 							<div class="mu-portfolio-content">
 								<div class="filtr-container">
-<?php foreach($materi as $mtr): ?>	
+								<?php foreach($materi as $mtr): ?>	
+								<!-- Materi-->
 					                <div class="col-xs-6 col-sm-4 col-md-4 filtr-item" data-category="<?=$mtr['id_mapel']?>">
 					                   <a href="#" data-toggle="modal" data-target=".a0<?=$mtr['id_materi']?>">
 						                   	<img class="img-responsive" src="<?=$mtr['file_sampul']?>" alt="image">
@@ -332,30 +345,26 @@
 						                    </div>
 					                   </a>
 					                </div>
-
-													<div class="modal fade a0<?=$mtr['id_materi']?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-														<div class="modal-dialog modal-lg">
-															<div class="modal-body">
-																<center><embed type="application/pdf" src="<?=$mtr['file_materi']?>" width="100%" height="800"></embed></center>
-																<center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
-															</div>
-														</div>
-													</div>
-<?php endforeach; ?>
-
+								<!-- End Materi-->
+								<!-- Modal Materi-->
+									<div class="modal fade a0<?=$mtr['id_materi']?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-body">
+												<center><embed type="application/pdf" src="<?=$mtr['file_materi']?>" width="100%" height="800"></embed></center>
+												<center><button type="button" class="btn btn-danger" data-dismiss="modal" > Close</button></center>
+											</div>
+										</div>
+									</div>
+								<!-- End Modal-->
+								<?php endforeach; ?>
 							</div>
 							<!-- End Materi Content -->
-
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
 		<!-- End Materi -->
-
-		<!-- Modal Materi-->
-		
-		<!-- End Modal-->
 
 		<!-- Start About -->
 		<section id="mu-testimonials">
