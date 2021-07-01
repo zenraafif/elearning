@@ -77,34 +77,41 @@
 		      </button>
 
 		      <!-- Text Logo -->
-		      <a class="navbar-brand" href="#">Sistem Informasi Pembelajaran</a>
+		      <a class="navbar-brand" href="index.php">Sistem Informasi Pembelajaran</a>
 
 		    </div>
 
 		    <!-- Link Navbar -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" background>
 		      	<ul class="nav navbar-nav mu-menu navbar-right">
-			        <li><a href="#">HOME</a></li>
-			        <li><a href="#mu-about">INTRODUCTION</a></li>
+			        <li><a href="index.php">HOME</a></li>
+			        <li><a href="index.php#mu-about">INTRODUCTION</a></li>
 		            <li class="dropdown">
 		            	<a href="#" class="dropdown-toggle" data-toggle="dropdown">STUDY <span class="caret"></span></a>
 		            		<ul class="dropdown-menu" >
-		            			<a class="dropdown-item" href="#mu-portfolio" style="color: #000000"> >> MATERI</a><br/>
-		            			<a class="dropdown-item" href="quizz.html" style="color: #000000"> >> QUIZZ</a>
+		            			<a class="dropdown-item" href="index.php#mu-portfolio" style="color: #000000"> >> MATERI</a><br/>
+		            			<a class="dropdown-item" href="kuis.php" style="color: #000000"> >> QUIZZ</a>
 		            		</ul>
 		            </li>
-		            <li><a href="#mu-testimonials">ABOUT</a></li>
-					<!-- array(3) { 
-						["role"]=> string(4) "guru" 
-						["username"]=> string(5) "guru1" 
-						["user_id"]=> string(1) "3" } -->
-					<?php
+		            <li><a href="index.php#mu-testimonials">ABOUT</a></li>
+						<?php
 						
-						if(isset($_SESSION["user_id"])){
+						if(isset($_SESSION["id_user"])){
 							if($_SESSION["role"] == "guru"){
-								echo '<li><a href="guru"><i class="fa fa-user" aria-hidden="true"></i>' .$_SESSION["username"].'</a></li>';
+								echo '
+								<li>
+									<a href="guru"><i class="fa fa-user" aria-hidden="true"></i>' .$_SESSION["username"].'</a>
+								</li>
+								';
 							}else{
-								echo '<li><a href="profil.php"><i class="fa fa-user" aria-hidden="true"></i>' .$_SESSION["username"].'</a></li>';
+								echo '
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i>' .$_SESSION["username"].' <span class="caret"></span></a>
+										<ul class="dropdown-menu" >
+											<a class="dropdown-item" href="logout.php" style="color: #000000"> Logout</a>
+										</ul>
+								</li>
+								';
 							}
 						}else{
 							echo '<li><a href="login.php">LOGIN</a></li>';
@@ -153,8 +160,7 @@
 						<li class="list-group-item"><b>Email :</b> <?php echo $siswa['email']?></li>
 						<li class="list-group-item"><b>Gender :</b> <?php echo $siswa['gender']?></li>
 					</ul>
-					<button type="button" class="btn btn-success btn-lg btn-block center" style="width:60% !important">Edit Profil</button>
-					<button type="button" class="btn btn-primary btn-lg btn-block center" style="width:60% !important">Kuis Yang Sudah Selesai</button>
+					<button type="button" class="btn btn-primary btn-lg btn-block center" style="width:60% !important"><a href="profil_kuis.php" class="link-light" style="color: white !important;">Kuis Yang Sudah Selesai</a></button>
 				</div>
 			</div>
 		</section>

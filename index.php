@@ -37,11 +37,9 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-	<?php
-		session_start();
-	?>
 	
 	<?php require 'koneksi.php';?> 
+	<?php require 'ceklogin_page.php';?> 
 
 	<?php
 		$sql_materi = "SELECT q.*, a.* 
@@ -97,7 +95,7 @@
 		            	<a href="#" class="dropdown-toggle" data-toggle="dropdown">STUDY <span class="caret"></span></a>
 		            		<ul class="dropdown-menu" >
 		            			<a class="dropdown-item" href="#mu-portfolio" style="color: #000000"> >> MATERI</a><br/>
-		            			<a class="dropdown-item" href="quizz.html" style="color: #000000"> >> QUIZZ</a>
+		            			<a class="dropdown-item" href="kuis.php" style="color: #000000"> >> QUIZZ</a>
 		            		</ul>
 		            </li>
 		            <li><a href="#mu-testimonials">ABOUT</a></li>
@@ -109,9 +107,21 @@
 						
 						if(isset($_SESSION["id_user"])){
 							if($_SESSION["role"] == "guru"){
-								echo '<li><a href="guru"><i class="fa fa-user" aria-hidden="true"></i>' .$_SESSION["username"].'</a></li>';
+								echo '
+								<li>
+									<a href="guru"><i class="fa fa-user" aria-hidden="true"></i>' .$_SESSION["username"].'</a>
+								</li>
+								';
 							}else{
-								echo '<li><a href="profil.php"><i class="fa fa-user" aria-hidden="true"></i>' .$_SESSION["username"].'</a></li>';
+								echo '
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i>' .$_SESSION["username"].' <span class="caret"></span></a>
+										<ul class="dropdown-menu" >
+											<a class="dropdown-item" href="profil.php" style="color: #000000"> Profil</a><br/>
+											<a class="dropdown-item" href="logout.php" style="color: #000000"> Logout</a>
+										</ul>
+								</li>
+								';
 							}
 						}else{
 							echo '<li><a href="login.php">LOGIN</a></li>';
