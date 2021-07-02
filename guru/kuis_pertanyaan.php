@@ -28,8 +28,8 @@
           <div class="card">
             <h5 class="card-header bg-secondary text-light"><?= $detail_kuis['judul_kuis']?></h5>
             <div class="card-body">
-              <p class="card-text">Mulai : <?= $detail_kuis['tanggal_mulai']?></p>
-              <p class="card-text">Selesai : <?= $detail_kuis['tanggal_selesai']?></p>
+              <p class="card-text">Mulai : <?= date('j F, Y   ',strtotime($detail_kuis['tanggal_mulai']))?></p>
+              <p class="card-text">Selesai : <?= date('j F, Y   ',strtotime($detail_kuis['tanggal_selesai']))?></p>
               <p class="card-text">Waktu : <?= $detail_kuis['waktu']?> Menit</p>
               <a href="kuis_pertanyaan_tambah.php?id=<?= $detail_kuis['id_kuis']; ?>">
             </div>

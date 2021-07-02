@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SIP Login</title>
-    <script src="sweet/sweetalert/sweetalert.min.js"></script>
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="styles.css" rel="stylesheet">
+    <script src="../sweet/sweetalert/sweetalert.min.js"></script>
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../styles.css" rel="stylesheet">
   </head>
   <body>
 
   <?php 
-    require "koneksi.php";
+    require "../koneksi.php";
     session_start();
 
     // jika data id tidak ditemukan di url

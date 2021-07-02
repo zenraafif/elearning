@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>SIP Home</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/icon" href="assets/imges/favicon.ico"/>
+    <link rel="shortcut icon" type="image/icon" href="../assets/imges/favicon.ico"/>
     <!-- CSS halaman kuis -->
-    <link href="css/kuis_style.css" rel="stylesheet">
+    <link href="../css/kuis_style.css" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/7f68d15522.js" crossorigin="anonymous"></script>
 
-    <?php require "koneksi.php"?>
+    <?php require "../koneksi.php"?>
 
     <?php
         session_start();
@@ -42,7 +42,7 @@
   <div class="container">
     <div class="row">
         <div class="col-lg-3">
-            <a href="#" class="btn btn-block btn-primary text-uppercase"><i class="fa fa-home"></i> Kembali ke Home</a>
+            <a href="index.php" class="btn btn-block btn-primary text-uppercase"><i class="fa fa-arrow-left"></i> Kembali</a>
         </div>
     </div>
     <div>
@@ -55,14 +55,6 @@
 
 
                     <form action="" method="post" id="kuis_form">
-                    <script>
-                        window.onload = function(){
-                            var id = '<?php echo $detail_kuis['id_kuis']?>';
-                            var time = '<?php echo date('Y-m-d H:i:s', time()); ?>';
-
-                            document.getElementById('kuis_form').action = 'kerjakan_kuis_proses.php?id=' + id + '&waktu_mulai=' +time;
-                        }
-                    </script>
                     <?php foreach($pertanyaan as $key=>$prt): ?>
                         
                             <h5 class="judul_kuis mb-2"><?php echo $key+1?>. <?php echo $prt['pertanyaan']?></h5>
@@ -92,7 +84,7 @@
                             </div>
                             <hr>
                     <?php endforeach; ?>
-                            <button href="kerjakan_kuis.php" class="btn btn-block btn-primary text-uppercase mt-3">SUBMIT</button>
+                            <button class="btn btn-block btn-primary text-uppercase mt-3">SUBMIT</button>
                     </form>                    
                 </div>
             </div>
@@ -140,7 +132,13 @@ window.onload = function () {
     var fiveMinutes = 60 * <?php echo $detail_kuis['waktu']?>,
         display = document.querySelector('#time');
     startTimer(fiveMinutes, display);
+
+    var id = '<?php echo $detail_kuis['id_kuis']?>';
+    var time = '<?php echo date('Y-m-d H:i:s', time()); ?>';
+    $('#kuis_form').attr('action', 'kerjakan_kuis_proses.php?id=' + id + '&waktu_mulai=' +time);
+    
 };
+
 </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

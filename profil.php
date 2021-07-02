@@ -90,7 +90,7 @@
 		            	<a href="#" class="dropdown-toggle" data-toggle="dropdown">STUDY <span class="caret"></span></a>
 		            		<ul class="dropdown-menu" >
 		            			<a class="dropdown-item" href="index.php#mu-portfolio" style="color: #000000"> >> MATERI</a><br/>
-		            			<a class="dropdown-item" href="kuis.php" style="color: #000000"> >> QUIZZ</a>
+		            			<a class="dropdown-item" href="kuis" style="color: #000000"> >> QUIZZ</a>
 		            		</ul>
 		            </li>
 		            <li><a href="index.php#mu-testimonials">ABOUT</a></li>

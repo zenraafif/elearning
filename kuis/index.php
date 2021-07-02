@@ -11,8 +11,10 @@
     <title>SIP Home</title>
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/icon" href="assets/imges/favicon.ico"/>
+    <!-- CSS halaman kuis -->
+    <link href="../css/kuis_style.css" rel="stylesheet">
 
-    <?php require "koneksi.php"?>
+    <?php require "../koneksi.php"?>
 
     <?php
         session_start();
@@ -22,56 +24,18 @@
   </head>
   <body>
     <style>
-
-.pricing .card {
-  border: none;
-  border-radius: 1rem;
-  transition: all 0.2s;
-  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
-}
-
-.pricing hr {
-  margin: 1.5rem 0;
-}
-
-.pricing .card-title {
-  margin: 0.5rem 0;
-  font-size: 0.9rem;
-  letter-spacing: .1rem;
-  font-weight: bold;
-}
-
-.pricing .judul_kuis {
-  font-size: 3rem;
-  margin: 0;
-}
-
-.pricing ul li {
-  margin-bottom: 1rem;
-}
-
-.pricing .btn {
-  font-size: 80%;
-  border-radius: 5rem;
-  letter-spacing: .1rem;
-  font-weight: bold;
-  padding: 1rem;
-  opacity: 0.7;
-  transition: all 0.2s;
-}
-
-/* Hover Effects on Card */
-
-@media (min-width: 992px) {
-  .pricing .card:hover {
-    margin-top: -.25rem;
-    margin-bottom: .25rem;
-    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
-  }
-  .pricing .card:hover .btn {
-    opacity: 1;
-  }
-}
+      .pricing .judul_kuis {
+        font-size: 3rem;
+        margin: 0;
+      }
+      /* Hover Effects on Card */
+      @media (min-width: 992px) {
+        .pricing .card:hover {
+          margin-top: -.25rem;
+          margin-bottom: .25rem;
+          box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
+        }
+      }
     </style>
 <!-- This snippet uses Font Awesome 5 Free as a dependency. You can download it at fontawesome.io! -->
 
@@ -79,7 +43,7 @@
   <div class="container">
     <div class="row">
         <div class="col-lg-3">
-            <a href="index.php" class="btn btn-block btn-primary text-uppercase"><i class="fa fa-home"></i> Kembali ke Home</a>
+            <a href="../" class="btn btn-block btn-primary text-uppercase"><i class="fa fa-home"></i> Kembali ke Home</a>
         </div>
     </div>
     <div>

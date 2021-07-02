@@ -39,8 +39,8 @@
             <tr>
               <th scope="row"><?= $key+1?></th>
               <td><?= $value['judul_kuis']; ?></td>
-              <td><?= $value['tanggal_mulai']; ?></td>
-              <td><?= $value['tanggal_selesai']; ?></td>
+              <td><?= date('j F, Y   ',strtotime($value['tanggal_mulai'])) ?></td>
+              <td><?= date('j F, Y   ',strtotime($value['tanggal_selesai'])) ?></td>
               <td>
                 <a type="button" class="btn btn-primary" href="kuis_pertanyaan.php?id=<?= $value['id_kuis']; ?>"><i class="far fa-eye"></i></a>
                 <a type="button" class="btn btn-success" href="kuis_edit.php?id=<?= $value['id_kuis']; ?>"><i class="fas fa-edit"></i></a>
