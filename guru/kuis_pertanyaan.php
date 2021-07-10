@@ -62,7 +62,8 @@
               <td><?= $value['skor']; ?></td>
               <td>
                 <a type="button" class="btn btn-success" href="kuis_pertanyaan_edit.php?id=<?= $value['id_pertanyaan']; ?>"><i class="fas fa-edit"></i></a>
-              <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                <a type="button" class="btn btn-danger" href="kuis_pertanyaan_delete.php?id_pertanyaan=<?= $value['id_pertanyaan']; ?>&id_kuis=<?= $id ?>"><i class="far fa-trash-alt"></i></a>
+
               </td>
             </tr>
           <?php endforeach; ?>

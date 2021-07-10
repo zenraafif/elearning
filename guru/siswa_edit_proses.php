@@ -63,7 +63,7 @@
 				              timer:2000,
 				              buttons:false
 				              }).then(()=>{
-				                  window.location.href='siswa.html';
+				                  window.location.href='siswa.php';
 				                  })
 				          </script>";
 					// echo "Error: " . $sql . "<br>" . $conn->error;

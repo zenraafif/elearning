@@ -45,7 +45,7 @@
               <td>
                 <a type="button" class="btn btn-primary" href="materi_detail.php?id=<?= $value['id_materi']; ?>"><i class="far fa-eye"></i></a>
                 <a type="button" class="btn btn-success" href="materi_edit.php?id=<?= $value['id_materi']; ?>"><i class="fas fa-edit"></i></a>
-              <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                <a type="button" class="btn btn-danger" href="materi_delete.php?id=<?= $value['id_materi']; ?>"><i class="far fa-trash-alt"></i></a>
               </td>
             </tr>
           <?php endforeach; ?>

@@ -38,7 +38,7 @@
               <td>
                 <a type="button" class="btn btn-primary" href="mapel_detail.php?id=<?= $value['id_mapel']; ?>"><i class="far fa-eye"></i></a>
                 <a type="button" class="btn btn-success" href="mapel_edit.php?id=<?= $value['id_mapel']; ?>"><i class="fas fa-edit"></i></a>
-              <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                <a type="button" class="btn btn-danger" href="mapel_delete.php?id=<?= $value['id_mapel']; ?>"><i class="far fa-trash-alt"></i></a>
               </td>
             </tr>
           <?php endforeach; ?>

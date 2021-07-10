@@ -54,7 +54,7 @@
               <td>
                 <a type="button" class="btn btn-primary" href="siswa_detail.php?id=<?= $value['id_user']; ?>"><i class="far fa-eye"></i></a>
                 <a type="button" class="btn btn-success" href="siswa_edit.php?id=<?= $value['id_user']; ?>"><i class="fas fa-edit"></i></a>
-              <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                <a type="button" class="btn btn-danger" href="siswa_delete.php?id=<?= $value['id_user']; ?>"><i class="far fa-trash-alt"></i></a>
               </td>
             </tr>
           <?php endforeach; ?>

@@ -44,7 +44,7 @@
               <td>
                 <a type="button" class="btn btn-primary" href="kuis_pertanyaan.php?id=<?= $value['id_kuis']; ?>"><i class="far fa-eye"></i></a>
                 <a type="button" class="btn btn-success" href="kuis_edit.php?id=<?= $value['id_kuis']; ?>"><i class="fas fa-edit"></i></a>
-              <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                <a type="button" class="btn btn-danger" href="kuis_delete.php?id=<?= $value['id_kuis']; ?>"><i class="far fa-trash-alt"></i></a>
               </td>
             </tr>
           <?php endforeach; ?>
